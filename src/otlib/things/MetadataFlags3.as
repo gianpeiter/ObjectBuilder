@@ -73,6 +73,8 @@ package otlib.things
         public static const MINI_MAP:uint = 0x1C;
         public static const LENS_HELP:uint = 0x1D;
         public static const FULL_GROUND:uint = 0x1E;
+        public static const MARKET_ITEM:uint = 0x21;
         public static const LAST_FLAG:uint = 0xFF;
+        public static const STRING_CHARSET:String = "iso-8859-1";
     }
 }

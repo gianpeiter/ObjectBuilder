@@ -187,6 +187,17 @@ package otlib.things
                         type.isFullGround = true;
                         break;
 
+                    case MetadataFlags3.MARKET_ITEM:
+                        type.isMarketItem = true;
+                        type.marketCategory = readUnsignedShort();
+                        type.marketTradeAs = readUnsignedShort();
+                        type.marketShowAs = readUnsignedShort();
+                        var nameLength:uint = readUnsignedShort();
+                        type.marketName = readMultiByte(nameLength, MetadataFlags3.STRING_CHARSET);
+                        type.marketRestrictProfession = readUnsignedShort();
+                        type.marketRestrictLevel = readUnsignedShort();
+                        break;
+
                     default:
                         throw new Error(Resources.getString("readUnknownFlag",
                                                             flag.toString(16),

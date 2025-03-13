@@ -418,6 +418,16 @@ package otlib.things
                     case MetadataFlags3.FULL_GROUND:
                         thing.isFullGround = true;
                         break;
+                    case MetadataFlags3.MARKET_ITEM:
+                        thing.isMarketItem = true;
+                        thing.marketCategory = input.readUnsignedShort();
+                        thing.marketTradeAs = input.readUnsignedShort();
+                        thing.marketShowAs = input.readUnsignedShort();
+                        var nameLength:uint = input.readUnsignedShort();
+                        thing.marketName = input.readMultiByte(nameLength, STRING_CHARSET);
+                        thing.marketRestrictProfession = input.readUnsignedShort();
+                        thing.marketRestrictLevel = input.readUnsignedShort();
+                        break;
                     default:
                         throw new Error(Resources.getString(
                             "readUnknownFlag",
@@ -1074,6 +1084,16 @@ package otlib.things
                 output.writeShort(thing.lensHelp);
             }
             if (thing.isFullGround) output.writeByte(MetadataFlags3.FULL_GROUND);
+            if (thing.isMarketItem) {
+                output.writeByte(MetadataFlags3.MARKET_ITEM);
+                output.writeShort(thing.marketCategory);
+                output.writeShort(thing.marketTradeAs);
+                output.writeShort(thing.marketShowAs);
+                output.writeShort(thing.marketName.length);
+                output.writeMultiByte(thing.marketName, STRING_CHARSET);
+                output.writeShort(thing.marketRestrictProfession);
+                output.writeShort(thing.marketRestrictLevel);
+            }
             output.writeByte(LAST_FLAG); // Close flags
             return true;
         }

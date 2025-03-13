@@ -177,6 +177,17 @@ package otlib.things
             if (type.isFullGround)
                 writeByte(MetadataFlags3.FULL_GROUND);
 
+            if (type.isMarketItem) {
+                writeByte(MetadataFlags3.MARKET_ITEM);
+                writeShort(type.marketCategory);
+                writeShort(type.marketTradeAs);
+                writeShort(type.marketShowAs);
+                writeShort(type.marketName.length);
+                writeMultiByte(type.marketName, MetadataFlags3.STRING_CHARSET);
+                writeShort(type.marketRestrictProfession);
+                writeShort(type.marketRestrictLevel);
+            }
+
             writeByte(MetadataFlags3.LAST_FLAG);
 
             return true;

@@ -381,6 +381,8 @@ THE SOFTWARE.
                 horizontalCheckBox.includeInLayout = visible;
                 verticalCheckBox.visible = visible;
                 verticalCheckBox.includeInLayout = visible;
+                marketGroupCheckBox.visible = visible;
+                marketGroupCheckBox.includeInLayout = visible;
 
                 visible = (info.clientVersion >= 755);
                 patternZLabel.visible = visible;
@@ -409,10 +411,6 @@ THE SOFTWARE.
                 visible = (isItem && info.clientVersion >= 900);
                 equipGroupCheckBox.visible = visible;
                 equipGroupCheckBox.includeInLayout = visible;
-
-                visible = (isItem && info.clientVersion >= 940);
-                marketGroupCheckBox.visible = visible;
-                marketGroupCheckBox.includeInLayout = visible;
 
                 visible = (isItem && info.clientVersion >= 1010);
                 noMoveAnimationCheckBox.visible = visible;
